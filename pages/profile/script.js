@@ -29,7 +29,7 @@ logout.addEventListener("click", () => {
 		isLoading = true;
 		const token = localStorage.getItem('token');
 		if (!token) {
-			return window.location.pathname = "/index.html"		
+			return window.location.pathname = "./kr-melnikov-dmitry-3/index.html"		
 		}
 		const body = getFormData(e.target, {}, 'formData');
 		const data = getFormData(e.target);
@@ -202,7 +202,7 @@ logout.addEventListener("click", () => {
         localStorage.removeItem("userId");
         localStorage.removeItem("token");
         console.log("User was successfully deleted");
-        window.location.pathname = "/index.html";
+        window.location.pathname = "./kr-melnikov-dmitry-3/index.html";
       } else {
         throw console.error("Error of Delete User");
       }
@@ -237,7 +237,7 @@ function getUserData() {
 	const token = localStorage.getItem("token");
 	const userId = localStorage.getItem("userId");
 	if (!token || !userId) {
-		return window.location.pathname = "/index.html"
+		return window.location.pathname = "./kr-melnikov-dmitry-3/index.html"
 	}
   fetchData({
     method: "GET",
@@ -254,7 +254,7 @@ function getUserData() {
   })
   .catch(err => {
     console.error(err);
-		return window.location.pathname = "/index.html"
+		return window.location.pathname = "./kr-melnikov-dmitry-3/index.html"
   })
 }
 
