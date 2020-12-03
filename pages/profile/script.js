@@ -1,1 +1,274 @@
-"use strict";function n(e,t){var r;if("undefined"==typeof Symbol||null==e[Symbol.iterator]){if(Array.isArray(e)||(r=function(e,t){if(!e)return;if("string"==typeof e)return i(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);"Object"===r&&e.constructor&&(r=e.constructor.name);if("Map"===r||"Set"===r)return Array.from(e);if("Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return i(e,t)}(e))||t&&e&&"number"==typeof e.length){r&&(e=r);var o=0,n=function(){};return{s:n,n:function(){return o>=e.length?{done:!0}:{done:!1,value:e[o++]}},e:function(e){throw e},f:n}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var a,s=!0,c=!1;return{s:function(){r=e[Symbol.iterator]()},n:function(){var e=r.next();return s=e.done,e},e:function(e){c=!0,a=e},f:function(){try{s||null==r.return||r.return()}finally{if(c)throw a}}}}function i(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,o=new Array(t);r<t;r++)o[r]=e[r];return o}var a,s,c,l,u,d,e,t,r,o,m,f,h=document.querySelector(".profile-img_js"),g=document.querySelector(".profile-name_js"),p=document.querySelector(".profile-surname_js"),w=document.querySelector(".profile-email_js"),y=document.querySelector(".profile-password_js"),v=document.querySelector(".profile-location_js"),S=document.querySelector(".profile-age_js"),j={};T(),logout.addEventListener("click",function(){T()}),a=document.querySelector(".change-password_js"),s=document.querySelector(".modal-change-password_js"),c=document.forms["change-password"],modalOpen(a,s,c),c.addEventListener("submit",function(e){if(e.preventDefault(),!isLoading){isLoading=!0;var t=localStorage.getItem("token");if(!t)return window.location.pathname="./kr-melnikov-dmitry-3/index.html";var r=getFormData(e.target,{},"formData"),o=function(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{};""===e.oldPassword&&(t.oldPassword="Your password is incorrect");""===e.newPassword?t.newPassword="Please enter your new password":e.newPassword.length<8&&(t.newPassword="Your new password is too short");e.newPasswordRepeat===e.newPassword&&""!==e.newPasswordRepeat||(t.newPasswordRepeat="Your password is incorrect, check it");return t}(getFormData(e.target));setFormErrors(c,o),0===Object.keys(o).length&&(c.insertAdjacentHTML("beforeend",'<div class="preloader"></div>'),r.querySelector(".preloader").innerHTML=formPreloaderCreator(),fetchData({method:"PUT",body:r,url:"/api/users/",headers:{"x-access-token":t}}).then(function(e){return e.json()}).then(function(e){e.success?setTimeout(function(){modalClose(a,s,c),sendResult(document.querySelector(".modal-success_js")),T()},2e3):setTimeout(function(){throw modalClose(a,s,c),sendResult(document.querySelector(".modal-error_js")),e},2e3),isLoading=!1}).catch(function(){console.error("Error of change password of User".concat(userId)),isLoading=!1}))}}),l=document.querySelector(".change-data_js"),u=document.querySelector(".modal-change-data_js"),d=document.forms["change-data"],l.addEventListener("click",function(){setValueToForm(d,j)}),modalOpen(l,u,d),d.addEventListener("submit",function(e){e.preventDefault();var t=function(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{};checkEmail(e.email)||(t.email="Please enter a valid email adress");""===e.name?t.name="Please enter your name":(e.name.length<2||20<=e.name.length)&&(t.name="Your name is not valid, check it");""===e.surname?t.surname="Please enter your surname":(e.surname.length<2||20<=e.surname.length)&&(t.surname="Your surname is not valid, check it");""===e.location?t.location="Please enter your location":(e.location.length<2||20<=e.location.length)&&(t.location="Location name is not valid");!isNaN(e.age)&&""!==e.age||(t.age="Please enter your age");return t}(getFormData(e.target));if(setFormErrors(d,t),console.log(t),0===Object.keys(t).length){if(d.insertAdjacentHTML("beforeend",'<div class="preloader"></div>'),(void 0).querySelector(".preloader").innerHTML=formPreloaderCreator(),isLoading)return;isLoading=!0;var r=localStorage.getItem("token");if(!r)return window.location.pathname="./kr-melnikov-dmitry-3/index.html";var o=getFormData(e.target,{},"formData");fetchData({method:"PUT",body:o,url:"/api/users/",headers:{"x-access-token":r}}).then(function(e){return e.json()}).then(function(e){e.success?setTimeout(function(){modalClose(l,u,d),sendResult(document.querySelector(".modal-success_js")),T()},2e3):setTimeout(function(){throw modalClose(l,u,d),sendResult(document.querySelector(".modal-error_js")),e},2e3),isLoading=!1}).catch(function(){console.error("Error of change data of User"),setFormErrors(e.target,err.errors),console.error(err.errors),isLoading=!1})}}),e=document.querySelector(".delete-profile_js"),t=document.querySelector(".modal_delete-profile_js"),r=document.forms["delete-profile"],o=document.querySelector(".delete-profile-accept_js"),m=localStorage.getItem("token"),f=localStorage.getItem("userId"),modalOpen(e,t,r),o.addEventListener("click",function(e){e.preventDefault(),isLoading=!0,fetchData({method:"DELETE",url:"/api/users/".concat(f),headers:{"x-access-token":m}}).then(function(e){return e.json()}).then(function(e){if(!e.success)throw console.error("Error of Delete User");localStorage.removeItem("userId"),localStorage.removeItem("token"),console.log("User was successfully deleted"),window.location.pathname="./kr-melnikov-dmitry-3/index.html",isLoading=!1})});var L=document.forms["change-data"].querySelector(".avatar-inner-text_js"),_=document.forms["change-data"].querySelector(".modal__close");function T(){var e=localStorage.getItem("token"),t=localStorage.getItem("userId");if(!e||!t)return window.location.pathname="./kr-melnikov-dmitry-3/index.html";fetchData({method:"GET",url:"/api/users/".concat(t)}).then(function(e){return e.json()}).then(function(e){if(!e.success)throw e;!function(e){for(var t=[],r=1;r<=e.password.length;r++)t.push("*");h.setAttribute("src","".concat(SERVER_URL).concat(e.photoUrl)),g.innerText=e.name,p.innerText=e.surname,w.innerText=e.email,y.innerText=t.join(""),v.innerText=e.location,S.innerText=e.age}(j=e.data)}).catch(function(e){return console.error(e),window.location.pathname="./kr-melnikov-dmitry-3/index.html"})}window.FileList&&window.File&&(document.querySelector(".avatar__input_js").addEventListener("change",function(e){L.innerText="";var t,r=n(e.target.files);try{for(r.s();!(t=r.n()).done;){var o=t.value;L.innerText="".concat(o.name)}}catch(e){r.e(e)}finally{r.f()}}),document.forms["change-data"].addEventListener("submit",function(e){e.preventDefault(),L.innerText="Choose a picture..."}),_.addEventListener("click",function(e){e.preventDefault(),L.innerText="Choose a picture..."}));
+const profileImg = document.querySelector(".profile-img_js");
+const profileName = document.querySelector(".profile-name_js");
+const profileSurname = document.querySelector(".profile-surname_js");
+const profileEmail = document.querySelector(".profile-email_js");
+const profilePassword = document.querySelector(".profile-password_js");
+const profileLocation = document.querySelector(".profile-location_js");
+const profileAge = document.querySelector(".profile-age_js");
+let user = {};
+
+getUserData(); 
+
+logout.addEventListener("click", () => {
+	getUserData();
+});
+
+// Change password
+(function(){
+	const changePasswordButton = document.querySelector(".change-password_js");
+	const  changePasswordModal = document.querySelector(".modal-change-password_js");
+	const changePasswordForm = document.forms["change-password"];
+
+	modalOpen(changePasswordButton, changePasswordModal, changePasswordForm);
+
+	changePasswordForm.addEventListener("submit", (e) => {
+		e.preventDefault();
+		if(isLoading) {
+			return;
+		}
+		isLoading = true;
+		const token = localStorage.getItem('token');
+		if (!token) {
+			return window.location.pathname = "/index.html"		
+		}
+		const body = getFormData(e.target, {}, 'formData');
+		const data = getFormData(e.target);
+		const errors = validateData(data);
+		setFormErrors(changePasswordForm, errors);
+		if (Object.keys(errors).length === 0) {
+      changePasswordForm.insertAdjacentHTML("beforeend", `<div class="preloader"></div>`);
+      body.querySelector(".preloader").innerHTML = formPreloaderCreator();
+      fetchData({
+				method: "PUT",
+				body: body,
+				url: `/api/users/`,
+				headers: {
+					'x-access-token': token,
+				}
+			})
+			.then(res => res.json())
+			.then(res => {
+				if (res.success) {				
+					setTimeout(function () {
+						modalClose(changePasswordButton, changePasswordModal, changePasswordForm);
+						sendResult(document.querySelector(".modal-success_js"));
+						getUserData();
+					}, 2000);
+				} else {				
+					setTimeout(function () {
+						modalClose(changePasswordButton, changePasswordModal, changePasswordForm);
+						sendResult(document.querySelector(".modal-error_js"));
+						throw res;
+					}, 2000);
+				}
+				isLoading = false;
+			})	
+			.catch(() => {
+				console.error(`Error of change password of User${userId}`)
+				isLoading = false;
+			})
+    } else {return}
+	})
+
+	function validateData(data, errors = {}) {
+		if(data.oldPassword === "") {
+			errors.oldPassword = "Your password is incorrect";
+		}
+		if (data.newPassword === "") {
+			errors.newPassword = "Please enter your new password";
+		} else if(data.newPassword.length < 8) {
+			errors.newPassword = "Your new password is too short";
+		}
+		if(data.newPasswordRepeat !== data.newPassword || data.newPasswordRepeat === "") {
+			errors.newPasswordRepeat = "Your password is incorrect, check it";
+		}
+		return errors;
+	}
+})();
+
+// Change User's Data
+(function(){
+	const changeDataButton = document.querySelector(".change-data_js");
+	const	changeDataModal = document.querySelector(".modal-change-data_js");
+	const changeDataForm = document.forms["change-data"];
+
+	changeDataButton.addEventListener('click', () => {
+		setValueToForm (changeDataForm, user)
+	})
+
+	modalOpen(changeDataButton, changeDataModal, changeDataForm);
+
+	changeDataForm.addEventListener("submit", (e) => {
+		e.preventDefault();
+		const data = getFormData(e.target);
+		const errors = validateData(data);
+		setFormErrors(changeDataForm, errors);
+		console.log(errors);
+		if (Object.keys(errors).length === 0) {
+      changeDataForm.insertAdjacentHTML("beforeend", `<div class="preloader"></div>`);
+      body.querySelector(".preloader").innerHTML = formPreloaderCreator();
+			if(isLoading) {
+				return;
+			}
+			isLoading = true;
+			const token = localStorage.getItem('token');
+			if (!token) {
+				return window.location.pathname = "./kr-melnikov-dmitry-3/index.html"		
+			}
+			const body = getFormData(e.target, {}, 'formData');
+			fetchData({
+				method: "PUT",
+				body: body,
+				url: `/api/users/`,
+				headers: {
+					'x-access-token': token,
+				}
+			})
+			.then(res => res.json())
+			.then(res => {
+				if (res.success) {	
+					setTimeout(function () {
+						modalClose(changeDataButton, changeDataModal, changeDataForm);
+						sendResult(document.querySelector(".modal-success_js"));
+						getUserData();
+					}, 2000);			
+				} else {	
+					setTimeout(function () {
+						modalClose(changeDataButton, changeDataModal, changeDataForm);
+						sendResult(document.querySelector(".modal-error_js"));
+						throw res;
+					}, 2000);	
+				}
+				isLoading = false;
+			})
+			.catch(() => {
+				console.error(`Error of change data of User`)
+				setFormErrors(e.target, err.errors);
+				console.error(err.errors);
+				isLoading = false;
+			})
+		}
+	})
+	function validateData(data, errors = {}) {
+		if(!checkEmail(data.email)) {
+			errors.email = "Please enter a valid email adress";
+		}
+		if(data.name === "") {
+			errors.name = "Please enter your name";
+		} else if(data.name.length < 2 || data.name.length >= 20) {
+			errors.name = "Your name is not valid, check it";
+		}
+		if(data.surname === "") {
+			errors.surname = "Please enter your surname";
+		} else if(data.surname.length < 2 || data.surname.length >= 20) {
+			errors.surname = "Your surname is not valid, check it";
+		}   
+		if(data.location === "") {
+			errors.location = "Please enter your location";
+		} else if(data.location.length < 2 || data.location.length >= 20) {
+			errors.location = "Location name is not valid";
+		}
+		if(isNaN(data.age) || data.age === "") {
+			errors.age = "Please enter your age";
+		}
+		return errors;
+	}
+})();
+
+//  Delete profile 
+(function () {
+	const deleteButton = document.querySelector(".delete-profile_js");
+	const	deleteModal = document.querySelector(".modal_delete-profile_js");
+	const deleteForm = document.forms["delete-profile"];
+	const deleteProfileButton = document.querySelector(".delete-profile-accept_js");
+	const token = localStorage.getItem('token');
+	const userId = localStorage.getItem("userId");
+
+	modalOpen(deleteButton, deleteModal, deleteForm);
+
+  deleteProfileButton.addEventListener("click", (e) => {
+		e.preventDefault();
+		isLoading = true;
+    fetchData({
+      method: "DELETE",
+      url: `/api/users/${userId}`,
+      headers: {       
+        "x-access-token": token, 
+      }
+		})
+		.then(res => res.json())
+		.then(res => {
+			if (res.success){
+        localStorage.removeItem("userId");
+        localStorage.removeItem("token");
+        console.log("User was successfully deleted");
+        window.location.pathname = "/index.html";
+      } else {
+        throw console.error("Error of Delete User");
+      }
+			isLoading = false;
+    })
+  })
+})();
+
+// Choose a picture to profile
+const avatarText = document.forms["change-data"].querySelector('.avatar-inner-text_js');
+const closeButton = document.forms["change-data"].querySelector(".modal__close");
+if (window.FileList && window.File) {
+  document.querySelector('.avatar__input_js').addEventListener('change', e => {
+    avatarText.innerText = '';
+    for (const file of e.target.files) {
+			avatarText.innerText = `${file.name}`;
+		}
+	});	
+	document.forms["change-data"].addEventListener("submit", (e) => {
+		e.preventDefault();
+		avatarText.innerText = `Choose a picture...`;
+	})
+	closeButton.addEventListener("click", (e) => {
+		e.preventDefault();
+		avatarText.innerText = `Choose a picture...`;
+	})
+}
+
+// Components
+
+function getUserData() {
+	const token = localStorage.getItem("token");
+	const userId = localStorage.getItem("userId");
+	if (!token || !userId) {
+		return window.location.pathname = "/index.html"
+	}
+  fetchData({
+    method: "GET",
+    url: `/api/users/${userId}`
+  })
+  .then(res => res.json())
+  .then(res => {
+    if (res.success){
+			user = res.data;
+			refreshUserData(user);
+    } else {
+      throw res;
+    }
+  })
+  .catch(err => {
+    console.error(err);
+		return window.location.pathname = "/index.html"
+  })
+}
+
+function refreshUserData(user) {	
+	let passwordLength = [],
+	symbol = "*";
+	for(let i = 1; i <= user.password.length; i++) {
+		passwordLength.push(symbol);
+	}
+	profileImg.setAttribute("src", `${SERVER_URL}${user.photoUrl}`)
+	profileName.innerText = user.name;
+	profileSurname.innerText = user.surname;
+	profileEmail.innerText = user.email;
+	profilePassword.innerText = passwordLength.join('');
+	profileLocation.innerText = user.location;
+	profileAge.innerText = user.age;
+}
