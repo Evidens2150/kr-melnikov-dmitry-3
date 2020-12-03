@@ -625,10 +625,10 @@ function setValueToForm(form, data) {
           updateState(); 
           modalClose(loginButton, loginModal, loginForm);
           console.log("Вход выполнен, ID пользователя:" + res.data.userId);   
-          if (window.location.pathname = "./pages/blog/index.html") {   
-            window.location.pathname = "../profile/index.html";
+          if (window.location.pathname = "./index.html" || window.location.pathname = "./") { 
+            window.location.pathname = "./pages/profile/index.html";  
           } else {   
-            window.location.pathname = "./pages/profile/index.html";
+            window.location.pathname = "../profile/index.html";
           }
         }, 2000);
       } else {        
