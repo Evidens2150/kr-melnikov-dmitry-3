@@ -31,7 +31,7 @@ logout.addEventListener("click", () => {
 		if (!token) {
 			return window.location.pathname = "./kr-melnikov-dmitry-3/index.html"		
 		}
-		const body = getFormData(e.target, {}, 'formData');
+		const bodyData = getFormData(e.target, {}, 'formData');
 		const data = getFormData(e.target);
 		const errors = validateData(data);
 		setFormErrors(changePasswordForm, errors);
@@ -40,7 +40,7 @@ logout.addEventListener("click", () => {
       body.querySelector(".preloader").innerHTML = formPreloaderCreator();
       fetchData({
 				method: "PUT",
-				body: body,
+				body: bodyData,
 				url: `/api/users/`,
 				headers: {
 					'x-access-token': token,
@@ -115,10 +115,10 @@ logout.addEventListener("click", () => {
 			if (!token) {
 				return window.location.pathname = "./kr-melnikov-dmitry-3/index.html"		
 			}
-			const body = getFormData(e.target, {}, 'formData');
+			const bodyData = getFormData(e.target, {}, 'formData');
 			fetchData({
 				method: "PUT",
-				body: body,
+				body: bodyData,
 				url: `/api/users/`,
 				headers: {
 					'x-access-token': token,
