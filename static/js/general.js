@@ -624,8 +624,12 @@ function setValueToForm(form, data) {
           updateToken(res.data);
           updateState(); 
           modalClose(loginButton, loginModal, loginForm);
-          console.log("Вход выполнен, ID пользователя:" + res.data.userId);      
-          window.location.pathname = "/pages/profile/index.html";
+          console.log("Вход выполнен, ID пользователя:" + res.data.userId);   
+          if (window.location.pathname = "./pages/blog/index.html") {   
+            window.location.pathname = "../profile/index.html";
+          } else {   
+            window.location.pathname = "./pages/profile/index.html";
+          }
         }, 2000);
       } else {        
       setTimeout(function () {
