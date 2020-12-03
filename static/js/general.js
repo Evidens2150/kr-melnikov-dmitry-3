@@ -624,12 +624,8 @@ function setValueToForm(form, data) {
           updateToken(res.data);
           updateState(); 
           modalClose(loginButton, loginModal, loginForm);
-          console.log("Вход выполнен, ID пользователя:" + res.data.userId);   
-          if (window.location.pathname === "https://evidens2150.github.io/kr-melnikov-dmitry-3/index.html") { 
-            return window.location.pathname = "./pages/profile/index.html";  
-          } else {   
-            return window.location.pathname = "../profile/index.html";
-          }
+          console.log("Вход выполнен, ID пользователя:" + res.data.userId);
+          window.location.pathname = "https://evidens2150.github.io/kr-melnikov-dmitry-3/pages/profile/index.html";
         }, 2000);
       } else {        
       setTimeout(function () {
