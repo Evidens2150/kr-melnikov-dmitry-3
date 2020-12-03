@@ -625,10 +625,10 @@ function setValueToForm(form, data) {
           updateState(); 
           modalClose(loginButton, loginModal, loginForm);
           console.log("Вход выполнен, ID пользователя:" + res.data.userId);   
-          if (window.location.pathname === "./index.html") { 
-            window.location.pathname = "./pages/profile/index.html";  
+          if (window.location.pathname === "https://evidens2150.github.io/kr-melnikov-dmitry-3/index.html") { 
+            return window.location.pathname = "./pages/profile/index.html";  
           } else {   
-            window.location.pathname = "../profile/index.html";
+            return window.location.pathname = "../profile/index.html";
           }
         }, 2000);
       } else {        
