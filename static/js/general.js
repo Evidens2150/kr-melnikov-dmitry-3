@@ -625,7 +625,7 @@ function setValueToForm(form, data) {
           updateState(); 
           modalClose(loginButton, loginModal, loginForm);
           console.log("Вход выполнен, ID пользователя:" + res.data.userId);   
-          if (window.location.pathname = "./index.html" || window.location.pathname = "./") { 
+          if (window.location.pathname = "index.html") { 
             window.location.pathname = "./pages/profile/index.html";  
           } else {   
             window.location.pathname = "../profile/index.html";
