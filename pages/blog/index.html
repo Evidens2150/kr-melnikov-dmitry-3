@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="/static/fonts/font-face.css" />
+    <link rel="stylesheet" href="/common.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="shortcut icon" href="/static/images/favicon.png"/>
+    <title>Blog</title>
+  </head>
+  <body>
+    <header class="header container header_js">
+  <button class="header__button-close-menu button-close-menu_js button-transparent">
+    <svg class="header__mobile-menu-close__svg" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3.37256" width="32" height="4" rx="2" transform="rotate(45 3.37256 0)" fill="#070707"/>
+      <rect x="0.543945" y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0.543945 22.6289)" fill="#070707"/>
+      </svg>      
+  </button>
+  <nav class="header-nav">
+  <ul class="header-nav__list">
+    <li class="header-nav__list__item">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="/" class="button button_gray-link header-nav__link header-nav__link_first">Home</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </li>
+    <li class="header-nav__list__item">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="/pages/blog/" class="button button_gray-link header-nav__link">My blog</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </li>
+    <li class="header-nav__list__item">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+	<button class="button button_gray-link header-nav__link signin_js">Sign in</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </li>
+    <li class="header-nav__list__item">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+	<button class="button button_gray-link header-nav__link register_js">Register</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </li>
+    <li class="header-nav__list__item">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="/pages/profile/" class="button button_gray-link header-nav__link profile_js">My profile</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </li>
+    <li class="header-nav__list__item">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+	<button class="button button_gray-link header-nav__link logout_js">Logout</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </li>
+  </ul>
+</nav>
+</header>
+
+    <main>
+      <section class="filter container">
+        <h1 class="filter__title h1">My blog</h1>
+        <form class="filter__form" name="filter">
+          <div class="filter__form__content">
+            <!-- tags -->
+            <fieldset class="filter__form__fieldset filter__form__fieldset_tags">
+              <legend class="filter__form__legend text_small">Tags</legend>
+              <div class="filter__form__tags-box tags_js"></div>
+            </fieldset>
+            <!-- views -->
+            <fieldset
+              class="filter__form__fieldset filter__form__fieldset_views"
+            >
+              <legend class="filter__form__legend text_small">Views</legend>
+              <label class="filter__form__radio-label">
+                <input
+                  class="filter__form__radio hidden"
+                  type="radio"
+                  name="views"
+                  value="100-500"
+                  checked
+                />
+                <span class="filter__form__radio-text text">100-500</span>
+              </label>
+              <label class="filter__form__radio-label">
+                <input
+                  class="filter__form__radio hidden"
+                  type="radio"
+                  name="views"
+                  value="500-1000"
+                />
+                <span class="filter__form__radio-text text">500-1000</span>
+              </label>
+              <label class="filter__form__radio-label">
+                <input
+                  class="filter__form__radio hidden"
+                  type="radio"
+                  name="views"
+                  value="1000-2000"
+                />
+                <span class="filter__form__radio-text text">1000-2000</span>
+              </label>
+            </fieldset>
+            <!-- comments -->
+            <fieldset
+              class="filter__form__fieldset filter__form__fieldset_comments"
+            >
+              <legend class="filter__form__legend text_small">Comments</legend>
+              <label class="filter__form__checkbox-label">
+                <input
+                  class="filter__form__checkbox hidden"
+                  type="checkbox"
+                  name="commentsCount"
+                  value="0"
+                />
+                <span class="filter__form__checkbox-text text">0</span>
+              </label>
+              <label class="filter__form__checkbox-label">
+                <input
+                  class="filter__form__checkbox hidden"
+                  type="checkbox"
+                  name="commentsCount"
+                  value="0-1"
+                />
+                <span class="filter__form__checkbox-text text">0-1</span>
+              </label>
+              <label class="filter__form__checkbox-label">
+                <input
+                  class="filter__form__checkbox hidden"
+                  type="checkbox"
+                  name="commentsCount"
+                  value="1-50"
+                />
+                <span class="filter__form__checkbox-text text">1-50</span>
+              </label>
+            </fieldset>
+            <!-- how show -->
+            <fieldset class="filter__form__fieldset filter__form__fieldset_show">
+              <legend class="filter__form__legend text_small">How show?</legend>
+              <label class="filter__form__radio-label">
+                <input
+                  class="filter__form__radio hidden"
+                  type="radio"
+                  name="show"
+                  value="5"
+                  checked
+                />
+                <span class="filter__form__radio-text text">show 5</span>
+              </label>
+              <label class="filter__form__radio-label">
+                <input
+                  class="filter__form__radio hidden"
+                  type="radio"
+                  name="show"
+                  value="10"
+                />
+                <span class="filter__form__radio-text text">show 10</span>
+              </label>
+            </fieldset>
+            <!-- sort by -->
+            <fieldset class="filter__form__fieldset filter__form__fieldset_sort">
+              <legend class="filter__form__legend text_small">Sort by</legend>
+              <label class="filter__form__radio-label">
+                <input
+                  class="filter__form__radio hidden"
+                  type="radio"
+                  name="sort"
+                  value="date"
+                  checked
+                />
+                <span class="filter__form__radio-text text">date</span>
+              </label>
+              <label class="filter__form__radio-label">
+                <input
+                  class="filter__form__radio hidden"
+                  type="radio"
+                  name="sort"
+                  value="title"
+                />
+                <span class="filter__form__radio-text text">title</span>
+              </label>
+              <label class="filter__form__radio-label">
+                <input
+                  class="filter__form__radio hidden"
+                  type="radio"
+                  name="sort"
+                  value="views"
+                />
+                <span class="filter__form__radio-text text">views</span>
+              </label>
+            </fieldset>
+            <!-- reset -->
+            <fieldset
+              class="filter__form__fieldset filter__form__fieldset_reset"
+            >
+              <legend
+                class="filter__form__legend filter__form__legend_reset text_small"
+              >
+                reset form
+              </legend>
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<button class="button filter__form__button" type="reset">Reset</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </fieldset>
+          </div>
+          <div class="filter__form__search search">
+            <input class="search__input" type="text" name="title" />
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<button class="button search__button" type="submit">Search</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </div>
+        </form>
+      </section>
+      <section class="blog">
+        <title class="blog__title hidden">Posts of blog</title>
+        <div class="blog__container container">
+          <div class="blog__content">
+            <ul class="blog__list posts_js"></ul>
+            <div class="blog__pagination">
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<button class="switch-button switch-button_disabled blog-previous-page-button_js" aria-label="Switch Left" disabled>
+		<img class="switch-button__img" src="/static/images/arrow.svg" alt="Switch Left">
+	</button>
+
+
+
+
+
+              <ul class="blog__pagination__list blog-pagination_js">
+              </ul>
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<button class="switch-button switch-button_right switch-button_disabled blog-next-page-button_js" aria-label="Switch Right" disabled>
+		<img class="switch-button__img" src="/static/images/arrow.svg" alt="Switch Right">
+	</button>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<button class="burger-button button-open-menu_js" aria-label="Navigation menu">
+    <img class="switch-button__img" src="/static/images/menu.svg" alt="Navigation menu">
+  </button>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<button class="button-to-top button-to-top_js" aria-label="To the top">
+		<img class="switch-button__img" src="/static/images/arrow.svg" alt="To the top">
+	</button>
+
+
+
+
+
+
+
+
+  
+  <!-- Login -->
+<div class="modal modal-signin_js">
+	<form class="modal__form modal__form_signin" name="signin">
+		<label class="modal__label">
+			<span class="modal__text modal__text_accent text_small">Email</span>
+			<input class="modal__input" type="email" name="email">
+		</label>
+		<label class="modal__label">
+			<span class="modal__text modal__text_accent text_small">Password</span>
+			<input class="modal__input" type="password" name="password">
+		</label>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<button class="button modal__button modal__button_signin" type="submit">Log in</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<button class="modal__close" aria-label="Close button"><img class="modal__x" src="/static/images/close.svg"  alt="Close button"></button>
+	</form>
+</div>
+<!-- Registration -->
+<div class="modal modal-register_js">
+	<form class="modal__form modal__form_register" name="register">
+		<label class="modal__label">
+			<span class="modal__text modal__text_accent text_small">Email</span>
+			<input class="modal__input" type="email" name="email">
+		</label>
+		<div class="modal__cell">
+			<div class="modal__cell-50">
+				<label class="modal__label">
+					<span class="modal__text modal__text_accent text_small">Name</span>
+					<input class="modal__input" type="text" name="name">
+				</label>
+			</div>
+			<div class="modal__cell-50">
+				<label class="modal__label">
+					<span class="modal__text modal__text_accent text_small">Surname</span>
+					<input class="modal__input" type="text" name="surname">
+				</label>
+			</div>
+		</div>
+		<div class="modal__cell">
+			<div class="modal__cell-50">
+				<label class="modal__label">
+					<span class="modal__text modal__text_accent text_small">Password</span>
+					<input class="modal__input" type="password" name="password">
+				</label>
+			</div>
+			<div class="modal__cell-50">
+				<label class="modal__label">
+					<span class="modal__text modal__text_accent text_small">Repeat password</span>
+					<input class="modal__input" type="password" name="passwordRepeat">
+				</label>
+			</div>
+		</div>
+		<div class="modal__cell">
+			<div class="modal__cell-50">
+				<label class="modal__label">
+					<span class="modal__text modal__text_accent text_small">Location</span>
+					<input class="modal__input" type="text" name="location">
+				</label>
+			</div>
+			<div class="modal__cell-50">
+				<label class="modal__label">
+					<span class="modal__text modal__text_accent text_small">Age</span>
+					<input class="modal__input" type="number" name="age">
+				</label>
+			</div>
+		</div>
+		<label class="modal__label modal__label_checkbox">
+			<input class="modal__checkbox  checkbox_js hidden" type="checkbox" name="accept" value="confirm">
+			<span class="modal__checkbox-text text_small">Clicking on the button, you consent to the processing of your personal data.</span>
+		</label>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<button class="button modal__button send_js" type="submit" disabled>Sign up</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<button class="modal__close" aria-label="Close button"><img class="modal__x" src="/static/images/close.svg" alt="Close button"></button>
+	</form>
+</div>
+<!-- Send Message -->
+<div class="modal modal-message_js">
+	<form class="modal__form modal__form_message" name="message">
+		<div class="modal__cell">
+			<div class="modal__cell-50">
+				<label class="modal__label">
+					<span class="modal__text modal__text_accent text_small">What is your name?</span>
+					<input class="modal__input modal__input" type="text" name="name">
+				</label>
+			</div>
+			<div class="modal__cell-50">
+				<label class="modal__label">
+					<span class="modal__text modal__text_accent text_small">Message subject</span>
+					<input class="modal__input" type="text" name="subject">
+				</label>
+			</div>
+		</div>
+		<div class="modal__cell">
+			<div class="modal__cell-50">
+				<label class="modal__label">
+					<span class="modal__text modal__text_accent text_small">Your Email</span>
+					<input class="modal__input" type="email" name="to">
+				</label>
+			</div>
+			<div class="modal__cell-50">
+				<label class="modal__label">
+					<span class="modal__text modal__text_accent text_small">Your mobile phone</span>
+					<input class="modal__input" type="tel" name="phone">
+				</label>
+			</div>
+		</div>
+		<label class="modal__label">
+			<span class="modal__text text_small">What do you want to discuss with me?</span>
+			<textarea class="modal__textarea" name="message"></textarea>
+		</label>
+		<label class="modal__label">
+			<input class="modal__checkbox checkbox_js hidden" type="checkbox" name="accept" value="confirm">
+			<span class="modal__checkbox-text">Clicking on the button, you consent to the processing of your personal data.</span>
+		</label>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<button class="button modal__button send_js" type="submit" disabled>Send</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<button class="modal__close" aria-label="Close button"><img class="modal__x" src="/static/images/close.svg" alt="Close button"></button>
+	</form>
+</div>
+<!-- Form send success -->
+<div class="modal modal-success_js">
+	<form class="modal__form postloader" name="postloader-success">
+			<span class="postloader__text postloader__text_good">Form has been sent successfully</span>
+		<button class="modal__close postloader__close" aria-label="Close button"><img class="modal__x" src="/static/images/close.svg" alt="Close button"></button>
+	</form>
+</div>
+<!-- Form send error -->
+<div class="modal modal-error_js">
+	<form class="modal__form postloader" name="postloader-error">
+			<span class="postloader__text postloader__text_bad postloader-text_js"></span>	
+		<button class="modal__close postloader__close" aria-label="Close button"><img class="modal__x" src="/static/images/close.svg" alt="Close button"></button>
+	</form>
+</div>
+  <div class="footer__content container">
+    <h2 class="footer__title">Contacts</h2>
+    <p class="footer__text">
+      Want to know more or just chat? You are welcome!
+    </p>
+    
+
+
+	<button class="button button_fill footer__button-send message_js">Send message</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <ul class="footer__contacts">
+      <li class="footer__contacts__item">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="#" class="button footer__contacts__link">Instagram</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </li>
+      <li class="footer__contacts__item">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="#" class="button footer__contacts__link">Vk</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </li>
+      <li class="footer__contacts__item">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="#" class="button footer__contacts__link">Telegram</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </li>
+      <li class="footer__contacts__item">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="#" class="button footer__contacts__link">Mail</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </li>
+      <li class="footer__contacts__item">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="#" class="button footer__contacts__link">GitHub</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </li>
+      <li class="footer__contacts__item">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="#" class="button footer__contacts__link">Phone</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </li>
+    </ul>
+    <div class="footer__description">
+      <p class="footer__description__text">Design by</p>
+      <a class="footer__description__link" href="#">DL Academy</a>
+      <p class="footer__description__text">Program code from Antonina</p>
+    </div>
+  </div>
+</footer>
+
+    <script src="/static/js/general.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
