@@ -264,7 +264,8 @@ function refreshUserData(user) {
 	for(let i = 1; i <= user.password.length; i++) {
 		passwordLength.push(symbol);
 	}
-	profileImg.setAttribute("src", `${SERVER_URL}${user.photoUrl}`)
+	profileImg.removeAttribute("src");
+	profileImg.setAttribute("src", `${SERVER_URL}${user.photoUrl}`);
 	profileName.innerText = user.name;
 	profileSurname.innerText = user.surname;
 	profileEmail.innerText = user.email;
